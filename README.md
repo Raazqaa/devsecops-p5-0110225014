@@ -22,3 +22,10 @@ python -m pytest src/test_app.py -v
 B. Jalankan Web Application:
 cd src
 python -m uvicorn app:app --reload
+
+## 4. Pipeline CI/CD (DevSecOps)
+    Pipeline otomatisasi diimplementasikan menggunakan GitHub Actions (.github/workflows/devsecops.yml) dengan dua tahapan (job) utama:
+
+    Build & Unit Test (build): Menginstall dependensi Python dan menjalankan automated unit testing menggunakan pytest.
+
+    SAST Security Scan (sast-scan): Melakukan Pemindaian Keamanan Kode Statis (Static Application Security Testing) menggunakan Bandit untuk mendeteksi potensi kerentanan pada kode Python. Job ini berjalan secara sekuensial setelah job build berhasil (needs: build).
