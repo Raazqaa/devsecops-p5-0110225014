@@ -10,25 +10,25 @@ def clear_notes():
 
 def test_dashboard_endpoint():
     response = client.get("/")
-    assert response.status_code == 200
+    assert response.status_code == 200 # nosec B101
 
 def test_create_note_endpoint():
     response = client.post("/notes?note=Security Note Test")
-    assert response.status_code == 200
-    assert response.json()["data"]["content"] == "Security Note Test"
+    assert response.status_code == 200 # nosec B101
+    assert response.json()["data"]["content"] == "Security Note Test" # nosec B101
 
 def test_update_note_endpoint():
     # Buat note dulu
     client.post("/notes?note=Catatan Awal")
     # Edit note id 1
     response = client.put("/notes/1?note=Catatan Diperbarui")
-    assert response.status_code == 200
-    assert response.json()["data"]["content"] == "Catatan Diperbarui"
+    assert response.status_code == 200 # nosec B101
+    assert response.json()["data"]["content"] == "Catatan Diperbarui" # nosec B101
 
 def test_delete_note_endpoint():
     # Buat note dulu
     client.post("/notes?note=Catatan Hapus")
     # Hapus note id 1
     response = client.delete("/notes/1")
-    assert response.status_code == 200
-    assert response.json()["message"] == "Catatan berhasil dihapus"
+    assert response.status_code == 200 # nosec B101
+    assert response.json()["message"] == "Catatan berhasil dihapus" # nosec B101
